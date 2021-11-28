@@ -1,0 +1,32 @@
+#include<bits/stdc++.h>
+using namespace std;
+#include <climits>
+#include <algorithm>
+/*
+https://www.udemy.com/course/cpp-data-structures-algorithms-prateek-narang/learn/quiz/5256300#questions/15480966
+*/
+
+int maxSumSubarray(vector<int> A) {
+    
+    if(A.size()==1){return A[0];}
+    
+    int cs = 0;                // Current Sun
+    int ms = INT_MIN;          // Max Sum
+    int ns = INT_MIN;          // Negative sum
+    
+    for(int i = 0;i<A.size();i++){
+        
+    
+        cs = cs + A[i];
+        
+        if(cs < 0)
+        
+        ms = max(ms,cs);
+        
+        if(A[i]>ns){ns=A[i];} //if all negative number then this use case. Basically we are comparing with most negative number
+                              //Highest in negative number will be set in NS .in case if NS reman negative that means all elemet were negative and we knw then that we need to return NS. otherwise MS. 
+        
+    }
+    
+    return ns<0?ns:ms;
+}

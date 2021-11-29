@@ -19,7 +19,7 @@ int maxSumSubarray(vector<int> A) {
     
         cs = cs + A[i];
         
-        if(cs < 0)
+        if(cs < 0){cs = 0;}
         
         ms = max(ms,cs);
         

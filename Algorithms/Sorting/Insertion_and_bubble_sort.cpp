@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <climits>
 using namespace std;
 void insertion_sort(vector<int> &vec){
 /*
@@ -28,6 +29,19 @@ for(int i = 1 ; i < N ; i++){
 }
 void bubble_sort(vector<int> &vec)
 {
+bool check = 1;
+int large = INT_MIN;
+    for(auto k : vec){
+if(k>large){large = k;}
+else{
+    check = 0;
+break;
+}
+    }
+
+    if(check == 1){
+        cout<<"already sorted"<<endl;
+        return;}
 
     /*In each iteration compare everything from begenning till end , and max will reach at  end of the array , fix the MAX .
     in the next iteration run the inner array one less than previous.
@@ -36,6 +50,7 @@ void bubble_sort(vector<int> &vec)
 int N = vec.size();
 for(int i = 0 ; i < N-1 ; i++)
 {
+
 
     for(int j = 0 ; j < N-1-i ; j++)
     {
@@ -57,7 +72,7 @@ auto print = [](vector<int> &vec){cout<< "[ ";for(auto i:vec){cout<<i<<" ";}cout
 int main(){
 
 vector<int> vec {1,5,7,0,0,-9,45};
-vector<int> vec1 {1,5,7,0,0,-9,45};
+vector<int> vec1 {1,2,3,4,5,6,45};
 print(vec);
 insertion_sort(vec);
 print(vec);
